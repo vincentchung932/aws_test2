@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/my_style1.css') }}">
+    <title>Recipes</title>
+</head>
+
+<body>
+    <div class="row1">
+        <h1>Welcome {{user.first_name}}!</h1>
+        <div>
+            <a href="/recipes/new">Create</a>
+            <a href="/">logout</a>
+        </div>
+    </div>
+    <p>These are the recipes</p>
+    <table class="recipe_table">
+        <tr>
+            <th>Name</th>
+            <th>Under 30 Min?</th>
+            <th>Actions</th>
+        </tr>
+        {% for recipe in user.recipes %}
+            <tr>
+                <th>{{recipe.name}}</th>
+                {% if recipe.time %}
+                    <th>Yes</th>
+                {% else %}
+                    <th>No</th>
+                {% endif %}
+                <th><a href="/recipes/{{recipe.id}}">View</a> <a href="/recipes/edit/{{recipe.id}}">Edit</a> <a href="/recipes/delete/{{recipe.id}}">Delete</a></th>
+            </tr>
+        {% endfor %}
+
+    </table>
+    
+
+
+</body>
+
+</html>

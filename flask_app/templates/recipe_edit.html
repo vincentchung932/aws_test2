@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/my_style2.css') }}">
+    <title>Recipes</title>
+</head>
+
+<body>
+    <div class="row1">
+        <h1>Edit Recipe</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/">logout</a>
+            
+        </div>
+    </div>
+    <form action="/recipes/editing/{{recipe.id}}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value='{{recipe.name}}'> <br>
+        <label for="description">Description:</label><br>
+        <textarea name="description" rows="4" cols="50" >{{recipe.description}}</textarea> <br>
+        <label for="instructions">Instructions:</label> <br>
+        <textarea name="instructions" rows="4" cols="50" >{{recipe.instructions}}</textarea> <br>
+        <label for="date_made">Date Made On:</label>
+        <input type="date" name="date_made" value={{recipe.date_made}}> <br>
+        
+        {% if recipe.time %}
+            <label for="time">Under 30min?</label> <br>
+            <input type="radio" name="time" value=1 checked>
+            <label for="time">Yes</label><br>
+            <input type="radio" name="time" value=0>
+            <label for="time">No</label><br>
+        {% else %}
+            <label for="time">Under 30min?</label> <br>
+            <input type="radio" name="time" value=1>
+            <label for="time">Yes</label><br>
+            <input type="radio" name="time" value=0 checked>
+            <label for="time">No</label><br>
+        {%endif%}
+        <button>Edit</button>
+
+    </form>
+
+
+</body>
+
+</html>

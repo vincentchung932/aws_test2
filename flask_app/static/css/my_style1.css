@@ -1,0 +1,16 @@
+*{
+    margin: 5px;
+}
+
+.row1{
+    display: flex;
+    justify-content: space-around;
+}
+
+.recipe_table{
+    border: 1px solid;
+}
+
+.recipe_table th{
+    width: 300px;
+}
